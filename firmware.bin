@@ -1,14 +1,9 @@
 from machine import Pin
 import time
 
-# Configuración del pin del LED (usualmente el pin 2 en el ESP32)
+# Configura el pin del LED (usualmente el GPIO2 en el ESP32)
 led = Pin(2, Pin.OUT)
 
-# Bucle para parpadeo rápido: 3 pulsos por segundo
 while True:
-    for _ in range(3):      # Tres pulsos
-        led.on()            # Enciende el LED
-        time.sleep(0.1)     # Mantén el LED encendido por 100 ms
-        led.off()           # Apaga el LED
-        time.sleep(0.1)     # Mantén el LED apagado por 100 ms
-    time.sleep(0.7)         # Espera 700 ms entre ciclos de 3 pulsos
+    led.value(not led.value())  # Cambiar el estado del LED
+    time.sleep(1)  # Parpadeo lento: 1 segundo
