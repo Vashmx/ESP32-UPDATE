@@ -1,0 +1,9 @@
+from machine import Pin
+import time
+
+# Configura el pin del LED (usualmente el GPIO2 en el ESP32)
+led = Pin(2, Pin.OUT)
+
+while True:
+    led.value(not led.value())  # Cambiar el estado del LED
+    time.sleep(0.2)  # Parpadeo rápido: 0.2 segundos
