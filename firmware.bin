@@ -1,17 +1,26 @@
 from machine import Pin
 import time
 
-
+# Configura el pin del LED (ajusta el número si el LED está en otro pin)
 led = Pin(2, Pin.OUT)
 
+# Ritmo de parpadeo en segundos (aproximado al ritmo del opening)
+# Aquí simulamos el pulso básico del ritmo de la canción
+# Puedes ajustar estos tiempos para acercarse más a la melodía específica.
+pattern = [
+    0.1, 0.1, 0.1, 0.3,  # Tres pulsos rápidos y una breve pausa
+    0.1, 0.1, 0.3,       # Dos pulsos rápidos y una pausa breve
+    0.1, 0.1, 0.1, 0.1,  # Cuatro pulsos rápidos
+    0.5,                 # Pausa larga
+    0.2, 0.2, 0.2,       # Tres pulsos moderados
+    0.3,                 # Pausa breve
+    0.2, 0.2, 0.5        # Dos pulsos moderados y una pausa larga
+]
 
+# Bucle principal para reproducir el patrón en bucle
 while True:
-    
-    for _ in range(5):
-        led.on()            
-        time.sleep(0.1)     
-        led.off()           
-        time.sleep(0.1)     
-    
-   
-    time.sleep(2)
+    for interval in pattern:
+        led.on()
+        time.sleep(interval)
+        led.off()
+        time.sleep(interval)
