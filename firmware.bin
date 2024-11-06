@@ -1,26 +1,22 @@
+import ota_update  # Importamos el módulo de actualización OTA
+
+# Conectarse a Wi-Fi y verificar si hay actualizaciones
+ota_update.connect_wifi()
+ota_update.check_for_update()
+
+# Código para el parpadeo de 5 pulsos por segundo con un descanso de 2 segundos
 from machine import Pin
 import time
 
-# Configura el pin del LED (ajusta el número si el LED está en otro pin)
-led = Pin(2, Pin.OUT)
+led = Pin(2, Pin.OUT)  # Cambiar el número del pin si es necesario
 
-# Ritmo de parpadeo en segundos (aproximado al ritmo del opening)
-# Aquí simulamos el pulso básico del ritmo de la canción
-# Puedes ajustar estos tiempos para acercarse más a la melodía específica.
-pattern = [
-    0.1, 0.1, 0.1, 0.3,  # Tres pulsos rápidos y una breve pausa
-    0.1, 0.1, 0.3,       # Dos pulsos rápidos y una pausa breve
-    0.1, 0.1, 0.1, 0.1,  # Cuatro pulsos rápidos
-    0.5,                 # Pausa larga
-    0.2, 0.2, 0.2,       # Tres pulsos moderados
-    0.3,                 # Pausa breve
-    0.2, 0.2, 0.5        # Dos pulsos moderados y una pausa larga
-]
-
-# Bucle principal para reproducir el patrón en bucle
 while True:
-    for interval in pattern:
-        led.on()
-        time.sleep(interval)
-        led.off()
-        time.sleep(interval)
+    # Realiza 5 parpadeos rápidos
+    for _ in range(5):
+        led.on()            # Enciende el LED
+        time.sleep(0.1)     # Mantén el LED encendido por 100 ms
+        led.off()           # Apaga el LED
+        time.sleep(0.1)     # Mantén el LED apagado por 100 ms
+    
+    # Descansa 2 segundos antes de repetir el ciclo
+    time.sleep(2)
