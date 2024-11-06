@@ -1,15 +1,10 @@
-import ota_update  # Importamos el módulo de actualización OTA
-
-# Conectarse a Wi-Fi y verificar si hay actualizaciones
-ota_update.connect_wifi()
-ota_update.check_for_update()
-
-# Código para el parpadeo de 5 pulsos por segundo con un descanso de 2 segundos
 from machine import Pin
 import time
 
-led = Pin(2, Pin.OUT)  # Cambiar el número del pin si es necesario
+# Configura el pin del LED (ajústalo si tu LED está en otro pin)
+led = Pin(2, Pin.OUT)
 
+# Bucle de parpadeo de 5 veces con un descanso de 2 segundos
 while True:
     # Realiza 5 parpadeos rápidos
     for _ in range(5):
@@ -18,5 +13,5 @@ while True:
         led.off()           # Apaga el LED
         time.sleep(0.1)     # Mantén el LED apagado por 100 ms
     
-    # Descansa 2 segundos antes de repetir el ciclo
+    # Descansa 2 segundos antes del siguiente ciclo de parpadeo
     time.sleep(2)
