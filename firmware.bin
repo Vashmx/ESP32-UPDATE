@@ -1,10 +1,17 @@
-import machine
+from machine import Pin
 import time
 
-led = machine.Pin(2, machine.Pin.OUT)
+
+led = Pin(2, Pin.OUT)
+
 
 while True:
-    led.on()
-    time.sleep(0.167)  # Encendido 0.167 segundos
-    led.off()
-    time.sleep(0.167)  # Apagado 0.167 segundos
+    
+    for _ in range(5):
+        led.on()            
+        time.sleep(0.1)     
+        led.off()           
+        time.sleep(0.1)     
+    
+   
+    time.sleep(2)
